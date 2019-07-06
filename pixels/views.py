@@ -9,8 +9,13 @@ def index(request):
 
 def show_image(request):
   # get all the info from the request
-  if request.META['HTTP_USER_AGENT'] is None:
-    ip = request.META['HTTP_USER_AGENT']
+	
+  logger.error("I THINK THE IP IS")
+  logger.error(request.META['HTTP_X_FORWARDED_FOR'])
+  logger.error("AFTER")
+
+  if request.META['HTTP_X_FORWARDED_FOR'] is not None:
+    ip = request.META['HTTP_X_FORWARDED_FOR']
   else:
     ip = ''
 
