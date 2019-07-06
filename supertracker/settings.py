@@ -25,7 +25,7 @@ SECRET_KEY = '!fix&t@x-2afo2jj8p#3$zmq5db#0@@%vc%&+*nafnw=mi^283'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['ec2-18-224-212-52.us-east-2.compute.amazonaws.com', '18.224.212.52', 'supertracker.delian.io', 'supertrackerip.delian.io']
+ALLOWED_HOSTS = ['ec2-18-224-212-52.us-east-2.compute.amazonaws.com', '18.224.212.52', 'supertracker.delian.io', 'supertrackerip.delian.io', 'localhost']
 
 
 # Application definition
@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'pixels',
 ]
 
 MIDDLEWARE = [

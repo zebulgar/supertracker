@@ -1,11 +1,13 @@
 from django.http import HttpResponse
+from django.template import RequestContext, Template, Context
+from django.shortcuts import render
 
 import requests
 import logging
 logger = logging.getLogger('pixels')
 
 def index(request):
-  return HttpResponse("Hello, world. You're at the pixels index.")
+  return render(request, "index.html")
 
 def show_image(request):
   # get all the info from the request
