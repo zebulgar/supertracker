@@ -9,17 +9,23 @@ logger = logging.getLogger('pixels')
 def index(request):
   return render(request, "index.html")
 
+def pixel(request):
+  username = request.GET.get('username','')
+  pixel = request.GET.get('pixel','')
+
+  return render(request, "pixel.html",{'username': username, 'pixel': pixel})
+
 def show_image(request):
   # get all the info from the request
-	
-  logger.error("I THINK THE IP IS")
-  logger.error(request.META['HTTP_X_FORWARDED_FOR'])
-  logger.error("AFTER")
 
-  if request.META['HTTP_X_FORWARDED_FOR'] is not None:
+  if 'HTTP_X_FORWARDED_FOR' in request.META.keys() and request.META['HTTP_X_FORWARDED_FOR'] is not None:
     ip = request.META['HTTP_X_FORWARDED_FOR']
   else:
     ip = ''
+
+  logger.error("I THINK THE IP IS")
+  logger.error(ip)
+  logger.error("AFTER")
 
   ipstack_url = "http://api.geoiplookup.net/?query=" + ip
   logger.error("IP URL")
@@ -34,6 +40,6 @@ def show_image(request):
   logger.error(request.META)
 
   # return the pikachu image
-  url='https://icon2.kisspng.com/20171220/pke/pikachu-png-5a3a8ca037eb27.8436492915137865282291.jpg'
+  url='http://www.pngmart.com/files/2/Pikachu-PNG-File.png'
   r = requests.get(url)
   return HttpResponse(r.content, content_type="image/png")

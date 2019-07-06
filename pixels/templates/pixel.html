@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="jumbotron text-center">
+  <div class="container">
+    <h1>@{{ username }} pixel</h1>
+    <p>Below you see instructions on how to insert your pixel into emails and see where your pixel has traveled to</p>
+  </div>
+</div>
+<div class="container">
+  <div class="row">
+    <div class="col-md-6">
+      <h3><span class="glyphicon glyphicon-info-sign"></span> How to use your pixel</h3>
+      <ul>
+        <li>Copy and paste the image below or click the button to copy to clipboard</li>
+        <li>Paste the image into your email and send it off the email</li>
+      </ul>
+      <br>
+      <img class="tracking-pixel" height="100">
+      <br>
+      <br>
+      <a type="button" class="btn btn-primary btn-clipboard"><span class="glyphicon glyphicon-eye-open"></span> Copy to Clipboard </a>
+    </div>
+  </div>
+</div>
+<script type="text/javascript">
+  $(".tracking-pixel").attr("src", window.location.origin+"/show_image?username={{username}}&pixel={{pixel}}")
+  $(".btn-clipboard").click(function() {
+  });
+</script>
+{% endblock %}
