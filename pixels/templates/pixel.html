@@ -9,19 +9,45 @@
 </div>
 <div class="container">
   <div class="row">
-    <div class="col-md-6">
+    <div class="col-md-4">
       <h3><span class="glyphicon glyphicon-info-sign"></span> How to use your pixel</h3>
       <ul>
-        <li>Copy and paste the image below or click the button to copy to clipboard</li>
+        <li>Copy and paste the image below by right clicking below this text and selecting copy image</li>
         <li>Paste the image into your email and send it off the email</li>
       </ul>
       <br>
       <img class="tracking-pixel" height="100">
       <br>
       <br>
-      <a type="button" class="btn btn-primary btn-clipboard"><span class="glyphicon glyphicon-eye-open"></span> Copy to Clipboard </a>
+      <p> image is in the space above </p>
+    </div>
+    <div class="col-md-8">
+      <h3><span class="glyphicon glyphicon-th-list"></span> Where your pixel has been</h3>
+      <table class="table table-striped table-bordered">
+        <tr>
+          <th>Time Opened</th>
+          <th>Device</th>
+          <th>Country</th>
+          <th>City</th>
+          <th>Latitude</th>
+          <th>Longitude</th>
+          <th>GMaps link</th>
+        </tr>
+        {% for request in requests %}
+          <tr>
+            <td> 3:00pm </td>
+            <td> iPhone </td>
+            <td> {{ request.country_name }} </td>
+            <td> {{ request.city }} </td>
+            <td> {{ request.latitude }} </td>
+            <td> {{ request.longitude }} </td>
+            <td> <a target="_blank" href="https://www.google.com/maps/search/{{ request.latitude }},%20{{ request.longitude }}"> link </a> </td>
+          </tr>
+        {% endfor %}
+      </table>
     </div>
   </div>
+
 </div>
 <script type="text/javascript">
   $(".tracking-pixel").attr("src", window.location.origin+"/show_image?username={{username}}&pixel={{pixel}}")
