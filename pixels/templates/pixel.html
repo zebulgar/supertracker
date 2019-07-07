@@ -15,6 +15,7 @@
         <li>Copy and paste the image below by right clicking below this text and selecting copy image</li>
         <li>This will only work on desktop</li>
         <li>Paste the image into your email and send off the email</li>
+        <li>Don't worry if it shows up as an empty image in the compose box, it'll load once sent</li>
       </ul>
       <br>
       <img class="tracking-pixel" height="100">
@@ -32,6 +33,7 @@
           <th>Client</th>
           <th>Country</th>
           <th>City</th>
+          <th>ISP</th>
           <th>Latitude</th>
           <th>Longitude</th>
           <th>GMaps link</th>
@@ -44,6 +46,7 @@
             <td> {{ request.client }} </td>
             <td> {{ request.country_name }} </td>
             <td> {{ request.city }} </td>
+            <td> {{ request.isp }} </td>
             <td> {{ request.latitude }} </td>
             <td> {{ request.longitude }} </td>
             <td> <a target="_blank" href="https://www.google.com/maps/search/{{ request.latitude }},%20{{ request.longitude }}"> link </a> </td>
